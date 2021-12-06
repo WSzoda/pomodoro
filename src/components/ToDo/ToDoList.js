@@ -3,7 +3,7 @@ import { useState } from "react";
 
 import ToDoControls from "./ToDoControls";
 
-function ToDoList(){
+const ToDoList = () => {
     const [toDos, setToDos] = useState([]);
     const [key, SetKey] = useState(0);
 

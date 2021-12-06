@@ -2,8 +2,9 @@ import logo from './logo.svg';
 import './App.css';
 
 import ToDoList from './components/ToDo/ToDoList';
+import Timer from './components/Timer/Timer';
 
-function App() {
+const App = () => {
   return (
     <div className="App">
       <header className="App-header">
@@ -20,6 +21,7 @@ function App() {
           Learn React
         </a>
       </header>
+      <Timer/>
       <ToDoList/>
     </div>
   );

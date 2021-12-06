@@ -1,14 +1,14 @@
 import React from "react";
 import { useState } from "react";
 
-function ToDoControls(props){
+const ToDoControls = (props) => {
     const [Task, SetTask] = useState("");
 
-    function handleChange(event){
+    const handleChange = (event) =>{
         SetTask(event.target.value);
     }
 
-    function handleSubmit(){
+    const handleSubmit = () =>{
         props.AddToDo(Task);
         SetTask("");
     }
