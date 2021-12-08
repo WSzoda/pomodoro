@@ -20,7 +20,7 @@ const ToDoList = () => {
         <div>
             <ul>
                 {
-                    toDos.forEach((Task) => {
+                    toDos.map((Task) => {
                         return <li key={GetKey}>{Task}</li>
                     })
                 }

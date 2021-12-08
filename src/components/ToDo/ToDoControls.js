@@ -1,22 +1,28 @@
 import React from "react";
 import { useState } from "react";
 
+import Button from "../Buttons/Button";
+
 const ToDoControls = (props) => {
-    const [Task, SetTask] = useState("");
+    const [task, setTask] = useState("");
 
     const handleChange = (event) =>{
-        SetTask(event.target.value);
+        setTask(event.target.value);
     }
 
     const handleSubmit = () =>{
-        props.AddToDo(Task);
-        SetTask("");
+        props.AddToDo(task);
+        setTask("");
     }
-
+    const pressedKey = (event) => {
+        if(event.keyCode === 13){
+            handleSubmit();
+        }
+    }
     return(
         <div>
-            <input placeholder="Type Task" value={Task} onChange={handleChange}/>
-            <button onClick={handleSubmit}>Add Task</button>
+            <input placeholder="Type Task" value={task} onChange={handleChange} onKeyDown={(event) => pressedKey(event)}/>
+            <Button function={handleSubmit} text="Add Task"/>
         </div>
     )
 }

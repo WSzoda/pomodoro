@@ -1,21 +1,26 @@
 import React from "react";
 import { useState } from "react";
 
+import Button from "../Buttons/Button";
+
 const TimerControls = (props) => {
     const [time, setTime] = useState(0);
 
     const handleClick = () =>{
-        var timeAmount = time;
-        if(isNaN(timeAmount[timeAmount.length-1])){
-            timeAmount = timeAmount.substring(0, timeAmount-2);
+        props.setTime(time*60);
+    }
+
+    const pressedKey = (event) => {
+        if(event.keyCode === 13){
+            handleClick();
         }
-        props.setTime(timeAmount*60);
     }
     
     return(
         <div>
-            <input onChange={(event) => {setTime(event.target.value)}} value={time} placeholder="Time in minutes"/>
-            <button onClick={handleClick}>Start Timer</button>
+            <input onChange={(event) => {setTime(event.target.value)}} value={time} placeholder="Time in minutes" onKeyDown={(event) => pressedKey(event)}/>
+            <Button function={handleClick} text="Set Timer"/>
+            <Button function={props.toogleTimer} text={props.isRunning ? "Stop Timer" : "Start Timer"}/>
         </div>
     )
 }
